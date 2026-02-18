@@ -13,3 +13,9 @@ venv/
 *.so
 .coverage
 htmlcov/
+*.pyc
+*.db
+*.db-wal
+*.db-shm
+*.keras
+node_modules/
