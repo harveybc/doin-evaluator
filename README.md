@@ -66,6 +66,18 @@ await service.start()
 | `/verify` | POST | Direct verification request |
 | `/infer` | POST | Direct inference request |
 
+## Three-Level Patience System
+
+Evaluators participate in the broader DOIN optimization pipeline which uses three patience levels:
+
+| Level | Name | Config Key | Controls | Default |
+|-------|------|------------|----------|---------|
+| **L1** | Candidate Training | `early_patience` | Epochs without val_loss improvement before stopping one candidate | 80–100 |
+| **L2** | Stage Progression | `optimization_patience` | Generations without improvement before advancing to next GA stage | 8–10 |
+| **L3** | Meta-Optimizer | *(not yet implemented)* | Network-level predictor trained on collective OLAP data | — |
+
+Evaluators verify L1/L2 results by independently testing model parameters on synthetic data.
+
 ## Architecture
 
 The evaluator runs two concurrent systems:
